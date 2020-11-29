@@ -13,7 +13,7 @@ use \Concrete\Package\Ht7Concrete5Base\ServiceProvider;
 class Controller extends Package
 {
 
-    protected $appVersionRequired = '5.8';
+    protected $appVersionRequired = '8.5';
     protected $pkgAutoloaderMapCoreExtensions = true;
     protected $pkgHandle = 'ht7_concrete5_base';
     protected $pkgVersion = '0.0.1';
