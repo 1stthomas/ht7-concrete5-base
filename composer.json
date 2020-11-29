@@ -4,6 +4,10 @@
     "repositories": [
         {
             "type": "git",
+            "url": "git@github.com:1stthomas/ht7-base.git"
+        },
+        {
+            "type": "git",
             "url": "git@github.com:1stthomas/ht7-concrete5-base.git"
         }
     ],
@@ -17,5 +21,8 @@
     "minimum-stability": "dev",
     "support": {
         "source": "https://github.com/1stthomas/ht7-concrete5-base"
+    },
+    "require": {
+        "ht7/ht7_base": "dev-master"
     }
 }
