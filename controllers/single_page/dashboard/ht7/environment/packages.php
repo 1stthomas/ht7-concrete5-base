@@ -12,7 +12,7 @@ class Packages extends DashboardPageController
 
     public function getCollectionDescription()
     {
-        return t("Default Settings Page for Ht7 Tools");
+        return t("Page with several informations about installed packages.");
     }
 
     public function list($filter)

@@ -12,7 +12,7 @@ class Environment extends DashboardPageController
 
     public function getCollectionDescription()
     {
-        return t("Default Settings Page for Ht7 Tools");
+        return t("Default Settings Page for Ht7 Tools.");
     }
 
     public function view()

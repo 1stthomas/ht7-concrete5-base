@@ -7,12 +7,12 @@ use \Concrete\Core\Page\Page;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
-class Settings extends DashboardPageController
+class Ht7Servers extends DashboardPageController
 {
 
     public function getCollectionDescription()
     {
-        return t("Main settings page for ht7 applications.");
+        return t("Default Settings Page for Ht7 Servers.");
     }
 
     public function view()
