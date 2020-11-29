@@ -3,7 +3,8 @@
 namespace Concrete\Package\Ht7Concrete5Base\Entity;
 
 /**
- * @ComposerPackages
+ * @Entity
+ * @Table(name="Ht7ComposerPackages")
  */
 class ComposerPackage extends OrmEntityExtended
 {
