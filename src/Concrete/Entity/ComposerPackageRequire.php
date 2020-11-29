@@ -3,7 +3,7 @@
 namespace Concrete\Package\Ht7Concrete5Base\Entity;
 
 /**
- * @ComposerPackageRequires(repositoryClass="\Concrete\Package\Ht7Concrete5Base\Repository\ComposerPackageRequireRepository")
+ * @Entity(repositoryClass="\Concrete\Package\Ht7Concrete5Base\Repository\ComposerPackageRequireRepository")
  * @Table(name="Ht7ComposerPackageRequires")
  */
 class ComposerPackageRequire extends OrmEntityExtended
