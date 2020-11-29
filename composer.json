@@ -1,14 +1,10 @@
 {
-    "name": "1stthomas/ht7-concrete-base",
+    "name": "ht7/ht7-concrete-base",
     "type": "concrete5-package",
     "repositories": [
         {
             "type": "git",
             "url": "git@github.com:1stthomas/ht7-base.git"
-        },
-        {
-            "type": "git",
-            "url": "git@github.com:1stthomas/ht7-concrete5-base.git"
         }
     ],
     "require": {
