@@ -1,0 +1,21 @@
+{
+    "name": "ht7/ht7_concrete_base",
+    "type": "concrete5-package",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:1stthomas/ht7-concrete5-base.git"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "composer/installers": "~1.0.7"
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "support": {
+        "source": "https://github.com/1stthomas/ht7-concrete5-base"
+    }
+}

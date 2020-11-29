@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<concrete5-cif version="1.0">
+    <singlepages>
+        <page name="ht7" path="/dashboard/ht7" filename="/dashboard/ht7.php" pagetype="" description="Ht7 Starting Page" package="ht7_concrete5_base"></page>
+        <page name="Environment" path="/dashboard/ht7/environment" filename="/dashboard/ht7/environment.php" pagetype="" description="" package="ht7_concrete5_base"></page>
+        <page name="Settings" path="/dashboard/ht7/settings" filename="/dashboard/ht7/settings.php" pagetype="" description="Main settings page" package="ht7_concrete5_base"></page>
+        <page name="Blocks" path="/dashboard/ht7/settings/blocks" filename="/dashboard/ht7/settings/blocks.php" pagetype="" description="Main settings page for ht7 blocks" package="ht7_concrete5_base"></page>
+    </singlepages>
+</concrete5-cif>
