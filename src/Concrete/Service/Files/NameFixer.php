@@ -2,7 +2,7 @@
 
 namespace Concrete\Package\Ht7Concrete5Base\Service\Files;
 
-use \Concrete\Core\Package\Package;
+use \Concrete\Core\Entity\Package;
 use \Concrete\Core\Page\Page;
 use \Doctrine\ORM\EntityManagerInterface;
 
