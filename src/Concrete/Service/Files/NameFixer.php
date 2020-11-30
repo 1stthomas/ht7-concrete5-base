@@ -2,6 +2,7 @@
 
 namespace Concrete\Package\Ht7Concrete5Base\Service\Files;
 
+use \Concrete\Core\Application\Application;
 use \Concrete\Core\Entity\Package;
 use \Concrete\Core\Page\Page;
 use \Doctrine\ORM\EntityManagerInterface;
@@ -19,6 +20,13 @@ use \Doctrine\ORM\EntityManagerInterface;
 class NameFixer
 {
 
+    protected $app;
+
+    public function __construct(Application $app)
+    {
+        $this->app = $app;
+    }
+
     /**
      * Make sure the c5 knows the the filenames belonging to the paths defined
      * by this package.
@@ -30,7 +38,7 @@ class NameFixer
      */
     public function fixFilenames($basePath, Package $pkg = null)
     {
-        $db = $this->getApp()
+        $db = $this->app
                 ->make(EntityManagerInterface::class)
                 ->getConnection();
         $cBase = Page::getByPath($basePath);
