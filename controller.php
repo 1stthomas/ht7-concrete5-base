@@ -71,7 +71,7 @@ class Controller extends Package
     private function fixFilenames()
     {
         $this->app->make('helper/ht7/file/namefixer')
-                ->fixFilenames('/dashboard/ht7/ht7-server', $this->pkg);
+                ->fixFilenames('/dashboard/ht7', $this->pkg);
     }
 
     private function registerAssets()
