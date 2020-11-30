@@ -20,8 +20,18 @@ use \Doctrine\ORM\EntityManagerInterface;
 class NameFixer
 {
 
+    /**
+     *
+     * @var     Application                 The concrete5 application container.
+     */
     protected $app;
 
+    /**
+     * Create an instance of the <code>NameFixer</code> class.
+     *
+     * @param   Application     $app
+     * @return  void
+     */
     public function __construct(Application $app)
     {
         $this->app = $app;
@@ -35,6 +45,7 @@ class NameFixer
      *                                      recursively fix their file name on
      *                                      the db.
      * @param   Package|null    $pkg        Description
+     * @return  void
      */
     public function fixFilenames($basePath, Package $pkg = null)
     {
@@ -75,6 +86,7 @@ class NameFixer
      *                                  pages from this package will be checked
      *                                  and fixed if necessary. Otherwise all
      *                                  pages will be fixed.
+     * @return  void
      */
     private function recFixFilenames(Page $c, $db, Package $pkg = null)
     {
