@@ -49,6 +49,12 @@ class Controller extends Package
         $this->pkg = parent::install();
         // Create all pages through the content XML.
         $this->installContentFile('install.xml');
+        // Make sure the package helper can be accessed.
+        $this->registerServices();
+        // If the path uses "-" to separate words and the filename
+        // uses "_", the cFilename on the Pages table is empty.
+        // Therefor we need to update this field.
+        $this->fixFilenames();
     }
 
     public function on_start()
@@ -56,6 +62,16 @@ class Controller extends Package
         $this->registerAssets();
         $this->registerServices();
         $this->registerRoutes();
+    }
+
+    /**
+     * Make sure the c5 knows the the filenames belonging to the paths defined
+     * by this package.
+     */
+    private function fixFilenames()
+    {
+        $this->app->make('helper/ht7/file/namefixer')
+                ->fixFilenames('/dashboard/ht7/ht7_server', $this->pkg);
     }
 
     private function registerAssets()
