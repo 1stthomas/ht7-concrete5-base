@@ -2,6 +2,7 @@
 
 namespace Concrete\Package\Ht7Concrete5Base\Service\Files;
 
+use \Concrete\Core\Package\Package;
 use \Concrete\Core\Page\Page;
 use \Doctrine\ORM\EntityManagerInterface;
 
@@ -25,15 +26,16 @@ class NameFixer
      * @param   string  $basePath           The path of the base page to
      *                                      recursively fix their file name on
      *                                      the db.
+     * @param   Package|null    $pkg        Description
      */
-    public function fixFilenames($basePath)
+    public function fixFilenames($basePath, Package $pkg = null)
     {
         $db = $this->getApp()
                 ->make(EntityManagerInterface::class)
                 ->getConnection();
         $cBase = Page::getByPath($basePath);
 
-        $this->recFixFilenames($cBase, $db);
+        $this->recFixFilenames($cBase, $db, $pkg);
     }
 
     /**
@@ -58,16 +60,23 @@ class NameFixer
     /**
      * Recursively fix the filename of the submitted page and its children.
      *
-     * @param Page $c
-     * @param \Concrete\Core\Database\Connection\Connection $db
+     * @param   Page        $c          The parent page from where the children
+     *                                  must be fixed.
+     * @param   \Concrete\Core\Database\Connection\Connection $db
+     * @param   Package     $pkg        If a package instance is defined, only
+     *                                  pages from this package will be checked
+     *                                  and fixed if necessary. Otherwise all
+     *                                  pages will be fixed.
      */
-    private function recFixFilenames(Page $c, $db)
+    private function recFixFilenames(Page $c, $db, Package $pkg = null)
     {
         if (is_object($c) && $c->getCollectionID() > 1) {
-            $cID = $c->getCollectionID();
-            $cFilename = $this->getFilenameFromPage($c);
-            // Fix the current page.
-            $db->query('UPDATE Pages SET cFilename="' . $cFilename . '" WHERE cID=' . $cID);
+            if ($pkg === null || $pkg->getPackageEntity()->getPackageID() === $pkg->getPackageID()) {
+                $cID = $c->getCollectionID();
+                $cFilename = $this->getFilenameFromPage($c);
+                // Fix the current page.
+                $db->query('UPDATE Pages SET cFilename="' . $cFilename . '" WHERE cID=' . $cID);
+            }
 
             $children = $c->getCollectionChildren();
 
