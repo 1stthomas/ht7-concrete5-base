@@ -1,6 +1,6 @@
 <?php
 
-namespace Concrete\Package\Ht7Concrete5Base\Controllers;
+namespace Concrete\Package\Ht7C5Base\Controllers;
 
 class Packages
 {

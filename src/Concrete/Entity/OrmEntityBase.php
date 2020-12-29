@@ -1,9 +1,9 @@
 <?php
 
-namespace Concrete\Package\Ht7Concrete5Base\Entity;
+namespace Concrete\Package\Ht7C5Base\Entity;
 
 use \DateTime;
-use \Concrete\Package\Ht7Concrete5Base\Traits\CanPackageBasics;
+use \Concrete\Package\Ht7C5Base\Traits\CanPackageBasics;
 
 /**
  * @MappedSuperclass

@@ -1,6 +1,6 @@
 <?php
 
-namespace Concrete\Package\Ht7Concrete5Base;
+namespace Concrete\Package\Ht7C5Base;
 
 use \Concrete\Core\Application\Application;
 use \Concrete\Core\Asset\AssetList;
@@ -8,14 +8,14 @@ use \Concrete\Core\File\Filesystem;
 use \Concrete\Core\Foundation\Service\ProviderList;
 use \Concrete\Core\Package\Package;
 use \Concrete\Core\Package\PackageService;
-use \Concrete\Package\Ht7Concrete5Base\ServiceProvider;
+use \Concrete\Package\Ht7C5Base\ServiceProvider;
 
 class Controller extends Package
 {
 
     protected $appVersionRequired = '8.5';
     protected $pkgAutoloaderMapCoreExtensions = true;
-    protected $pkgHandle = 'ht7_concrete5_base';
+    protected $pkgHandle = 'ht7_c5_base';
     protected $pkgVersion = '0.0.1';
 
     /**
@@ -35,12 +35,12 @@ class Controller extends Package
 
     public function getPackageDescription()
     {
-        return tc('ht7_concrete5_base', 'Ht7 Starter package which installs some new dashboard pages and more.');
+        return tc('ht7_c5_base', 'Ht7 Starter package which installs some new dashboard pages and more.');
     }
 
     public function getPackageName()
     {
-        return tc('ht7_concrete5_base', 'Ht7 c5 Starter');
+        return tc('ht7_c5_base', 'Ht7 c5 Starter');
     }
 
     public function install()

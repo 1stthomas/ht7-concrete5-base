@@ -1,6 +1,6 @@
 <?php
 
-namespace Concrete\Package\Ht7Concrete5Base\Traits;
+namespace Concrete\Package\Ht7C5Base\Traits;
 
 use \Concrete\Core\Http\Request;
 

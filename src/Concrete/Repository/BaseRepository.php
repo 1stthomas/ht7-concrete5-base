@@ -1,6 +1,6 @@
 <?php
 
-namespace Concrete\Package\Ht7Concrete5Base\Repository;
+namespace Concrete\Package\Ht7C5Base\Repository;
 
 use \Doctrine\ORM\EntityRepository;
 

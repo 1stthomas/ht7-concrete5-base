@@ -1,6 +1,6 @@
 <?php
 
-namespace Concrete\Package\Ht7Concrete5Base\Controller\SinglePage\Dashboard\Ht7\Settings;
+namespace Concrete\Package\Ht7C5Base\Controller\SinglePage\Dashboard\Ht7\Settings;
 
 use \Concrete\Core\Page\Controller\DashboardPageController;
 use \Concrete\Core\Page\Page;

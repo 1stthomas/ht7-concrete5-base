@@ -1,9 +1,9 @@
 <?php
 
-namespace Concrete\Package\Ht7Concrete5Base\Entity;
+namespace Concrete\Package\Ht7C5Base\Entity;
 
 /**
- * @Entity(repositoryClass="\Concrete\Package\Ht7Concrete5Base\Repository\ComposerPackageRequireRepository")
+ * @Entity(repositoryClass="\Concrete\Package\Ht7C5Base\Repository\ComposerPackageRequireRepository")
  * @Table(name="Ht7ComposerPackageRequires")
  */
 class ComposerPackageRequire extends OrmEntityExtended

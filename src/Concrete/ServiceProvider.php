@@ -1,10 +1,10 @@
 <?php
 
-namespace Concrete\Package\Ht7Concrete5Base;
+namespace Concrete\Package\Ht7C5Base;
 
 use \Concrete\Core\Foundation\Service\Provider as CoreServiceProvider;
-use \Concrete\Package\Ht7Concrete5Base\Service\Files\NameFixer;
-use \Concrete\Package\Ht7Concrete5Base\Service\Users\User;
+use \Concrete\Package\Ht7C5Base\Service\Files\NameFixer;
+use \Concrete\Package\Ht7C5Base\Service\Users\User;
 
 class ServiceProvider extends CoreServiceProvider
 {

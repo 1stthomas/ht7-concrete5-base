@@ -1,6 +1,6 @@
 <?php
 
-namespace Concrete\Package\Ht7Concrete5Base\Entity;
+namespace Concrete\Package\Ht7C5Base\Entity;
 
 /**
  * @Entity

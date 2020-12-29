@@ -1,6 +1,6 @@
 <?php
 
-namespace Concrete\Package\Ht7Concrete5Base\Service\Files;
+namespace Concrete\Package\Ht7C5Base\Service\Files;
 
 use \Concrete\Core\Application\Application;
 use \Concrete\Core\Entity\Package;

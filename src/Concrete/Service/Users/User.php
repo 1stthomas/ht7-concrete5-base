@@ -1,6 +1,6 @@
 <?php
 
-namespace Concrete\Package\Ht7Concrete5Base\Service\Users;
+namespace Concrete\Package\Ht7C5Base\Service\Users;
 
 use \InvalidArgumentException;
 use \Concrete\Core\Support\Facade\Application;

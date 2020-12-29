@@ -1,11 +1,9 @@
 <?php
 
-namespace Concrete\Package\Ht7Concrete5Base\Entity;
+namespace Concrete\Package\Ht7C5Base\Entity;
 
 use \InvalidArgumentException;
-use \Concrete\Package\Ht7Concrete5Base\Traits\CanLoad;
-
-//use \Concrete\Package\MeschNeonetCourseManagement\Error\MeschPageNotFoundException;
+use \Concrete\Package\Ht7C5Base\Traits\CanLoad;
 
 /**
  * @MappedSuperclass

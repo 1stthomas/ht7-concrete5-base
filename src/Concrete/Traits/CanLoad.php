@@ -1,6 +1,6 @@
 <?php
 
-namespace Concrete\Package\Ht7Concrete5Base\Traits;
+namespace Concrete\Package\Ht7C5Base\Traits;
 
 /**
  * This trait provides a method to load an object with an associated array.
