@@ -172,7 +172,7 @@ class OrmEntityExtended extends OrmEntityBase
             $entityName = strpos($className, 'MeschCm') !== false ? str_replace('MeschCm', '', $className) : $className;
             // Create the exception message
             $msg = tc(
-                    'ht7_concrete5_base',
+                    'ht7_c5_base',
                     'The requested %1$s with the id %2$s could not be found.',
                     $entityName, $id
             );

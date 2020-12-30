@@ -24,7 +24,7 @@ trait CanPackageBasics
      * @var     string      The package handle.
      * @todo                Must be handled by the ht7-base/registry!
      */
-    protected static $pkgHandle = 'ht7_concrete5_base';
+    protected static $pkgHandle = 'ht7_c5_base';
     protected static $pkg;
 
     /**
