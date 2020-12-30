@@ -8,6 +8,7 @@ use \Concrete\Core\File\Filesystem;
 use \Concrete\Core\Foundation\Service\ProviderList;
 use \Concrete\Core\Package\Package;
 use \Concrete\Core\Package\PackageService;
+use \Concrete\Core\User\Group\Group;
 use \Concrete\Package\Ht7C5Base\ServiceProvider;
 
 class Controller extends Package
@@ -55,6 +56,8 @@ class Controller extends Package
         // uses "_", the cFilename on the Pages table is empty.
         // Therefor we need to update this field.
         $this->fixFilenames();
+
+        $this->installUserGroups();
     }
 
     public function on_start()
@@ -116,6 +119,16 @@ class Controller extends Package
 
         // Create all missing pages through the content XML.
         $this->installContentFile('install.xml');
+    }
+
+    private function installUserGroups()
+    {
+        Group::add(
+                tc('GroupName', 'ht7'),
+                tc('ht7_c5_base', 'Base Group for ht7 apps.'),
+                false,
+                $this->pkg
+        );
     }
 
     /**
