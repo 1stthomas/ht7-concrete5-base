@@ -32,3 +32,6 @@ defined('C5_EXECUTE') or die("Access Denied.");
         </div>
     <?php } ?>
 </div>
+<div>handle:
+    <?php echo app('helper/ht7/package/base')->getPackageHandle(); ?>
+</div>

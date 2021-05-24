@@ -101,7 +101,7 @@ class PackageBase extends AbstractService
                 }
             } elseif (!is_object($obj)) {
                 $e = 'The first parameter needs to be an object or null, found '
-                        . gettype($obj);
+                        . gettype($obj) . '.';
 
                 throw new \InvalidArgumentException($e);
             }

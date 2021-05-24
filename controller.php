@@ -36,7 +36,10 @@ class Controller extends Package
 
     public function getPackageDescription()
     {
-        return tc('ht7_c5_base', 'Ht7 Starter package which installs some new dashboard pages and more.');
+        return tc(
+                'ht7_c5_base',
+                'Ht7 Starter package which installs some new dashboard pages and more.'
+        );
     }
 
     public function getPackageName()
@@ -94,25 +97,6 @@ class Controller extends Package
 
     }
 
-    /**
-     * Removes e.g. all single pages coming from this package. If the remove
-     * DB tables setting was activated, all package database tables will also
-     * be removed.
-     */
-    public function uninstall()
-    {
-        parent::uninstall();
-
-//        $request = Request::getInstance();
-//
-//        if ($request->request->get('remove-db-tables')) {
-//            $db = Database::connection();
-//            $db->query('SET FOREIGN_KEY_CHECKS=0');
-//            $db->query('DROP TABLE MeschCmProfessionalGroups');
-//            $db->query('SET FOREIGN_KEY_CHECKS=1');
-//        }
-    }
-
     public function upgrade()
     {
         parent::upgrade();
@@ -124,8 +108,8 @@ class Controller extends Package
     private function installUserGroups()
     {
         Group::add(
-                tc('GroupName', 'ht7'),
-                tc('ht7_c5_base', 'Base Group for ht7 apps.'),
+                tc('ht7_c5_base-group_name', 'ht7'),
+                tc('ht7_c5_base', 'Base Group for ht7 applications.'),
                 false,
                 $this->pkg
         );
