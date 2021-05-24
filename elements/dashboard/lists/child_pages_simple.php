@@ -2,8 +2,8 @@
 defined('C5_EXECUTE') or die('Access Denied.');
 ?>
 <div class=" ccm-dashboard-section-menu">
-    <?php if (count($pages)): ?>
-        <?php foreach ($pages as $page): ?>
+    <?php if (count($pages)) { ?>
+        <?php foreach ($pages as $page) { ?>
             <p>
                 <a
                     href="<?= $page->getCollectionLink(); ?>"
@@ -11,8 +11,8 @@ defined('C5_EXECUTE') or die('Access Denied.');
                     ><?= $page->getCollectionName(); ?>
                 </a>
             </p>
-        <?php endforeach; ?>
-    <?php else: ?>
+        <?php } ?>
+    <?php } elseif ($showEmptyText) { ?>
         <p><?= t('No pages found'); ?></p>
-    <?php endif; ?>
+    <?php } ?>
 </div>
