@@ -17,4 +17,9 @@ This class provides also methods to gain the related package file/db config.
 
 #### File Name Fixer ####
 concrete 5 can not handle page paths with a dash ("-"). This helper can tranform page names with a "_"
-into "-".
+into "-". Simply call:
+
+'''php
+$app->make('helper/ht7/file/namefixer')->fixFilenames('/', <pkgHandle>);
+'''
+to fix all page paths of the submitted package.
