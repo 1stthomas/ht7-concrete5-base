@@ -109,7 +109,7 @@ class Controller extends Package
     {
         Group::add(
                 tc('ht7_c5_base-group_name', 'ht7'),
-                tc('ht7_c5_base', 'Base Group for ht7 applications.'),
+                tc('ht7_c5_base-group_name', 'Base Group for ht7 applications.'),
                 false,
                 $this->pkg
         );
