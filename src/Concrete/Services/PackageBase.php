@@ -30,15 +30,13 @@ class PackageBase extends AbstractService
             if ($obj instanceof Block) {
                 return $this->app->make(PackageService::class)
                                 ->getByID($obj->getPackageID());
-            } else {
-
             }
-        } else {
-            $pkgHandle = $this->getPackageHandle();
-
-            return $this->app->make(PackageService::class)
-                            ->getByHandle($pkgHandle);
         }
+
+        $pkgHandle = $this->getPackageHandle();
+
+        return $this->app->make(PackageService::class)
+                        ->getByHandle($pkgHandle);
     }
 
     /**
