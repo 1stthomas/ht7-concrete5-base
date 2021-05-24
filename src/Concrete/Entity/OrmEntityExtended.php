@@ -2,8 +2,9 @@
 
 namespace Concrete\Package\Ht7C5Base\Entity;
 
-use \InvalidArgumentException;
+use \Concrete\Core\Support\Facade\Application;
 use \Concrete\Package\Ht7C5Base\Traits\CanLoad;
+use \Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @MappedSuperclass
@@ -55,10 +56,6 @@ class OrmEntityExtended extends OrmEntityBase
         parent::__construct();
 
         $this->load($data);
-
-//        if (!empty($data)) {
-//            $this->load($data);
-//        }
     }
 
     /**
@@ -137,7 +134,8 @@ class OrmEntityExtended extends OrmEntityBase
      */
     public static function getByID($id, $respectSafeDeleteProperty = true)
     {
-        $em = self::getEm();
+        $em = Application::getFacadeApplication()
+                ->make(EntityManagerInterface::class);
 
         if ($respectSafeDeleteProperty && static::$safeDelete) {
             return $em->getRepository(static::class)
@@ -170,14 +168,13 @@ class OrmEntityExtended extends OrmEntityBase
             $classNs = static::class;
             $className = substr($classNs, strrpos($classNs, '\\') + 1);
             $entityName = strpos($className, 'MeschCm') !== false ? str_replace('MeschCm', '', $className) : $className;
-            // Create the exception message
+
             $msg = tc(
                     'ht7_c5_base',
                     'The requested %1$s with the id %2$s could not be found.',
                     $entityName, $id
             );
-            throw new InvalidArgumentException($msg);
-//            throw new MeschPageNotFoundException($msg);
+            throw new \InvalidArgumentException($msg);
         }
     }
 

@@ -1,16 +1,15 @@
 <?php
 
-namespace Concrete\Package\Ht7C5Base\Service\Users;
+namespace Concrete\Package\Ht7C5Base\Services;
 
 use \InvalidArgumentException;
-use \Concrete\Core\Support\Facade\Application;
 use \Doctrine\ORM\EntityManagerInterface;
 
 //use \Concrete\Core\User\User;
 //use \Concrete\Core\User\Group\Group;
 //use \Concrete\Core\User\Group\GroupList;
 
-class User
+class UserBase extends AbstractService
 {
 
     /**
@@ -47,12 +46,13 @@ class User
     /**
      * Get the max id of user ids from the c5 db.
      *
-     * @return  string
+     * This method makes a lookup for the auto increment value of the user table.
+     *
+     * @return  int
      */
     public function getMaxId()
     {
-        $db = Application::getFacadeApplication()
-                ->make(EntityManagerInterface::class)
+        $db = $this->app->make(EntityManagerInterface::class)
                 ->getConnection();
 
         $sql = 'SELECT AUTO_INCREMENT '
@@ -65,7 +65,7 @@ class User
             'Users'
         ];
 
-        return $db->getOne($sql, $parameters);
+        return (int) $db->getOne($sql, $parameters);
     }
 
     public function getPattern()

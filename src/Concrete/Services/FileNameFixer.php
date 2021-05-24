@@ -1,8 +1,7 @@
 <?php
 
-namespace Concrete\Package\Ht7C5Base\Service\Files;
+namespace Concrete\Package\Ht7C5Base\Services;
 
-use \Concrete\Core\Application\Application;
 use \Concrete\Core\Entity\Package;
 use \Concrete\Core\Page\Page;
 use \Doctrine\ORM\EntityManagerInterface;
@@ -17,25 +16,8 @@ use \Doctrine\ORM\EntityManagerInterface;
  * @author Thomas Plüss
  * @copyright (c) 2019, Thomas Plüss
  */
-class NameFixer
+class FileNameFixer extends AbstractService
 {
-
-    /**
-     *
-     * @var     Application                 The concrete5 application container.
-     */
-    protected $app;
-
-    /**
-     * Create an instance of the <code>NameFixer</code> class.
-     *
-     * @param   Application     $app
-     * @return  void
-     */
-    public function __construct(Application $app)
-    {
-        $this->app = $app;
-    }
 
     /**
      * Make sure the c5 knows the the filenames belonging to the paths defined
