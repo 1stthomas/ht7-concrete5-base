@@ -3,8 +3,6 @@
 namespace Concrete\Package\Ht7C5Base;
 
 use \Concrete\Core\Application\Application;
-use \Concrete\Core\Asset\AssetList;
-use \Concrete\Core\File\Filesystem;
 use \Concrete\Core\Foundation\Service\ProviderList;
 use \Concrete\Core\Package\Package;
 use \Concrete\Core\Package\PackageService;
@@ -53,7 +51,8 @@ class Controller extends Package
         $this->pkg = parent::install();
         // Create all pages through the content XML.
         $this->installContentFile('install.xml');
-        // Make sure the package helper can be accessed.
+        // Make sure the package helper can be accessed by later installation
+        // process' of this package.
         $this->registerServices();
         // If the path uses "-" to separate words and the filename
         // uses "_", the cFilename on the Pages table is empty.
@@ -65,9 +64,7 @@ class Controller extends Package
 
     public function on_start()
     {
-        $this->registerAssets();
         $this->registerServices();
-        $this->registerRoutes();
     }
 
     /**
@@ -80,23 +77,6 @@ class Controller extends Package
                 ->fixFilenames('/dashboard/ht7', $this->pkg);
     }
 
-    private function registerAssets()
-    {
-
-    }
-
-    /**
-     * Register all routes defined in config/paths.php.
-     *
-     * This method let the route helper compose an array which can be used by
-     * calling <code>Route::registerMultiple($routesArray)</code>.
-     *
-     */
-    public function registerRoutes()
-    {
-
-    }
-
     public function upgrade()
     {
         parent::upgrade();
@@ -107,12 +87,16 @@ class Controller extends Package
 
     private function installUserGroups()
     {
-        Group::add(
-                tc('ht7_c5_base-group_name', 'ht7'),
-                tc('ht7_c5_base-group_name', 'Base Group for ht7 applications.'),
-                false,
-                $this->pkg
-        );
+        $gName = tc('ht7_c5_base-group_name', 'ht7');
+
+        if (!is_object(Group::getByName($gName))) {
+            Group::add(
+                    $gName,
+                    tc('ht7_c5_base-group_name', 'Base Group for ht7 applications.'),
+                    false,
+                    $this->pkg
+            );
+        }
     }
 
     /**

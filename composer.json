@@ -1,6 +1,7 @@
 {
     "name": "ht7/ht7_c5_base",
     "type": "concrete5-package",
+    "keywords": ["concrete5", "package"],
     "repositories": [
         {
             "type": "git",
