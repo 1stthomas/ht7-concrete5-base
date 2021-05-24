@@ -3,6 +3,5 @@
     <singlepages>
         <page name="ht7" path="/dashboard/ht7" filename="/dashboard/ht7.php" pagetype="" description="Ht7 Starting Page" package="ht7_c5_base"></page>
         <page name="ht7 Block Settings" path="/dashboard/ht7/blocks" filename="/dashboard/ht7/blocks.php" pagetype="" description="Ht7 block settings" package="ht7_c5_base"></page>
-        <page name="ht7 Server Settings" path="/dashboard/ht7/servers" filename="/dashboard/ht7/servers.php" pagetype="" description="Ht7 server settings" package="ht7_c5_base"></page>
     </singlepages>
 </concrete5-cif>
