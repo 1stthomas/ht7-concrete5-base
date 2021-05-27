@@ -33,7 +33,7 @@ class PackageBase extends AbstractService
             }
         }
 
-        $pkgHandle = $this->getPackageHandle();
+        $pkgHandle = $this->getPackageHandle($obj);
 
         return $this->app->make(PackageService::class)
                         ->getByHandle($pkgHandle);
