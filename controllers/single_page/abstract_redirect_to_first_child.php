@@ -7,14 +7,26 @@ use \Concrete\Core\Page\Controller\DashboardPageController;
 use \Concrete\Core\Permission\Checker as Permissons;
 use \Concrete\Core\Support\Facade\Url;
 
-//use \Concrete\Core\User\User;
-
 abstract class AbstractRedirectToFirstChild extends DashboardPageController
 {
 
+    public function view()
+    {
+        return $this->redirectToFirstChild();
+    }
+
+    /**
+     * Redirect to the first child of the current page.
+     *
+     * This method will redirect to 404 if no children can be found. In case of
+     * present children, the first child with access permissions will be choosen
+     * for the redirection. If the current user has no permission to any child
+     * the response will be 403.
+     *
+     * @return \Concrete\Core\Http\Response
+     */
     protected function redirectToFirstChild()
     {
-//        $u = $this->app->make(User::class);
         $responseFactory = $this->app->make(ResponseFactory::class);
         $children = $this->c->getCollectionChildren();
 
@@ -31,12 +43,6 @@ abstract class AbstractRedirectToFirstChild extends DashboardPageController
 
             return $responseFactory->forbidden(Url::to($firstChild));
         }
-    }
-
-    public function view()
-    {
-//        echo "<h1>hier...</h1>";
-        return $this->redirectToFirstChild();
     }
 
 }
