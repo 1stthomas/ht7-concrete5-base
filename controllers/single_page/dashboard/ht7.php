@@ -14,7 +14,6 @@ class Ht7 extends DashboardPageController
     {
         $c = Page::getCurrentPage();
         $pages = $c->getCollectionChildren();
-        \Log::addEntry('count ' . count($pages));
         $this->set('pages', $pages);
     }
 
