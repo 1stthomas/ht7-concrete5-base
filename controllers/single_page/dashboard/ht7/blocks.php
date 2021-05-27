@@ -2,19 +2,11 @@
 
 namespace Concrete\Package\Ht7C5Base\Controller\SinglePage\Dashboard\Ht7;
 
-use \Concrete\Core\Page\Controller\DashboardPageController;
-use \Concrete\Core\Page\Page;
+use \Concrete\Package\Ht7C5Base\Controller\SinglePage\AbstractRedirectToFirstChild;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
-class Blocks extends DashboardPageController
+class Blocks extends AbstractRedirectToFirstChild
 {
-
-    public function view()
-    {
-        $c = Page::getCurrentPage();
-        $pages = $c->getCollectionChildren();
-        $this->set('pages', $pages);
-    }
 
 }
