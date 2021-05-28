@@ -1,0 +1,74 @@
+/*
+ * copyright 2021 by https://proto.io/freebies/onoff/
+ */
+.ht7-widget.onoffswitch {
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    width: 90px;
+    .onoffswitch-checkbox {
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        &:checked + .onoffswitch-label .onoffswitch-inner {
+            margin-left: 0;
+        }
+        &:checked + .onoffswitch-label .onoffswitch-switch {
+            right: 0px;
+        }
+    }
+    .onoffswitch-label {
+        border: 2px solid #999999;
+        border-radius: 20px;
+        cursor: pointer;
+        display: block;
+        margin: 0;
+        overflow: hidden;
+        .onoffswitch-inner {
+            display: block;
+            margin-left: -100%;
+            transition: margin 0.3s ease-in 0s;
+            width: 200%;
+            &:before, &:after {
+                box-sizing: border-box;
+                color: white;
+                display: block;
+                float: left;
+                font-family: Trebuchet, Arial, sans-serif;
+                font-size: 14px;
+                font-weight: bold;
+                height: 30px;
+                line-height: 30px;
+                padding: 0;
+                width: 50%;
+            }
+            &:before {
+                background-color: #34C279;
+                color: #FFFFFF;
+                content: "ON";
+                padding-left: 10px;
+            }
+            &:after {
+                background-color: #EDA1A1;
+                color: #665A5A;
+                content: "OFF";
+                padding-right: 10px;
+                text-align: right;
+            }
+        }
+        .onoffswitch-switch {
+            background: #FFFFFF;
+            border: 2px solid #999999;
+            border-radius: 20px;
+            bottom: 0;
+            display: block;
+            margin: 6px;
+            position: absolute;
+            right: 56px;
+            top: 0;
+            transition: all 0.3s ease-in 0s;
+            width: 18px;
+        }
+    }
+}

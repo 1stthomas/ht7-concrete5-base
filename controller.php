@@ -3,6 +3,7 @@
 namespace Concrete\Package\Ht7C5Base;
 
 use \Concrete\Core\Application\Application;
+use \Concrete\Core\Asset\AssetList;
 use \Concrete\Core\Foundation\Service\ProviderList;
 use \Concrete\Core\Package\Package;
 use \Concrete\Core\Package\PackageService;
@@ -64,6 +65,8 @@ class Controller extends Package
 
     public function on_start()
     {
+        $this->setupAutoloader();
+        $this->registerAssets();
         $this->registerServices();
     }
 
@@ -99,6 +102,19 @@ class Controller extends Package
         }
     }
 
+    private function registerAssets()
+    {
+        $al = AssetList::getInstance();
+
+        $al->register(
+                'css',
+                'ht7-widgets/status-toggle',
+                'css/ht7.widgets.statustoggle.css',
+                ['version' => '0.0.1', 'minify' => true, 'combine' => true],
+                $this
+        );
+    }
+
     /**
      * Register the package services, register the package specific ErrorHandler.
      */
@@ -106,6 +122,15 @@ class Controller extends Package
     {
         $list = new ProviderList($this->app);
         $list->registerProvider(ServiceProvider::class);
+    }
+
+    private function setupAutoloader()
+    {
+        if (file_exists($this->getPackagePath() . '/vendor')) {
+            // Only for development to make sure the package dependencies are
+            // accessable.
+            require_once $this->getPackagePath() . '/vendor/autoload.php';
+        }
     }
 
 }
