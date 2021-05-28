@@ -127,6 +127,13 @@ class Controller extends Package
                 ['version' => '0.0.1', 'minify' => true, 'combine' => true],
                 $this
         );
+        $al->register(
+                'javascript',
+                'ht7-widgets/concrete5',
+                'js/ht7.widgets.c5.js',
+                ['version' => '0.0.1', 'minify' => true, 'combine' => true],
+                $this
+        );
 
         $al->registerGroup(
                 'ht7-widgets/body-overlay',
