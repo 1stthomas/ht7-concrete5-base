@@ -10,6 +10,8 @@ use \Concrete\Core\Package\PackageService;
 use \Concrete\Core\User\Group\Group;
 use \Concrete\Package\Ht7C5Base\ServiceProvider;
 
+defined('C5_EXECUTE') or die('Access Denied.');
+
 class Controller extends Package
 {
 
