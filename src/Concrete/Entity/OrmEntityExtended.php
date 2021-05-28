@@ -9,7 +9,7 @@ use \Doctrine\ORM\EntityManagerInterface;
 /**
  * @MappedSuperclass
  */
-class OrmEntityExtended extends OrmEntityBase
+class OrmEntityExtended extends OrmEntityBase implements \Serializable
 {
 
     use CanLoad;
@@ -91,6 +91,14 @@ class OrmEntityExtended extends OrmEntityBase
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function serialize()
+    {
+        return serialize($this->toArray());
+    }
+
+    /**
      * @param DateTime $createdAt
      */
     public function setCreatedAt($createdAt)
@@ -112,6 +120,26 @@ class OrmEntityExtended extends OrmEntityBase
     public function setDeletedAt($deletedAt)
     {
         $this->deletedAt = $deletedAt;
+    }
+
+    /**
+     *
+     * @return  array                   Assoc array of all properties of the
+     *                                  present instance.
+     */
+    public function toArray()
+    {
+        return get_object_vars($this);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function unserialize(string $data)
+    {
+        $arr = unserialize($data);
+
+        $this->load($arr);
     }
 
     /**
