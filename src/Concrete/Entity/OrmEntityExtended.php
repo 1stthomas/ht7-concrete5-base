@@ -135,7 +135,7 @@ class OrmEntityExtended extends OrmEntityBase implements \Serializable
     /**
      * {@inheritdoc}
      */
-    public function unserialize(string $data)
+    public function unserialize($data)
     {
         $arr = unserialize($data);
 
