@@ -5,9 +5,10 @@ namespace Concrete\Package\Ht7C5Base\Entity;
 use \Concrete\Core\Support\Facade\Application;
 use \Concrete\Package\Ht7C5Base\Traits\CanLoad;
 use \Doctrine\ORM\EntityManagerInterface;
+use \Doctrine\ORM\Mapping as ORM;
 
 /**
- * @MappedSuperclass
+ * @ORM\MappedSuperclass
  */
 abstract class OrmEntityExtended extends OrmEntityBase implements \Serializable
 {
@@ -24,30 +25,30 @@ abstract class OrmEntityExtended extends OrmEntityBase implements \Serializable
     /**
      * @var Integer
      *
-     * @Id
-     * @GeneratedValue
-     * @Column(type="integer", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer", options={"unsigned"=true})
      */
     protected $id;
 
     /**
      * @var \DateTime
      *
-     * @Column(type="datetime", nullable=false)
+     * @ORM\Column(type="datetime", nullable=false)
      */
     protected $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @Column(type="datetime", nullable=false)
+     * @ORM\Column(type="datetime", nullable=false)
      */
     protected $updatedAt;
 
     /**
      * @var \DateTime
      *
-     * @Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     protected $deletedAt;
 

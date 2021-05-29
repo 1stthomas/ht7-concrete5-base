@@ -4,9 +4,10 @@ namespace Concrete\Package\Ht7C5Base\Entity;
 
 use \Concrete\Core\Support\Facade\Application;
 use \Doctrine\ORM\EntityManagerInterface;
+use \Doctrine\ORM\Mapping as ORM;
 
 /**
- * @MappedSuperclass
+ * @ORM\MappedSuperclass
  */
 abstract class OrmEntityBase
 {
