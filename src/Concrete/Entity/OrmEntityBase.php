@@ -8,7 +8,7 @@ use \Doctrine\ORM\EntityManagerInterface;
 /**
  * @MappedSuperclass
  */
-class OrmEntityBase
+abstract class OrmEntityBase
 {
 
     /**

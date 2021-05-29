@@ -9,7 +9,7 @@ use \Doctrine\ORM\EntityManagerInterface;
 /**
  * @MappedSuperclass
  */
-class OrmEntityExtended extends OrmEntityBase implements \Serializable
+abstract class OrmEntityExtended extends OrmEntityBase implements \Serializable
 {
 
     use CanLoad;
