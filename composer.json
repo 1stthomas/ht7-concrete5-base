@@ -1,20 +1,29 @@
 {
     "name": "ht7/ht7_c5_base",
+    "license": "GNU GPLv3",
+    "description": "A concrete5 package to provide some basic tasks.",
     "type": "concrete5-package",
     "keywords": ["concrete5", "package"],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "1stthomas",
+            "role": "Developer"
+        }
+    ],
+    "config": {
+        "optimize-autoloader": true
+    },
+    "support": {
+        "source": "https://github.com/1stthomas/ht7-concrete5-base"
+    },
     "repositories": [
         {
             "type": "git",
             "url": "git@github.com:1stthomas/ht7-base.git"
         }
     ],
-    "config": {
-        "optimize-autoloader": true
-    },
-    "minimum-stability": "dev",
-    "support": {
-        "source": "https://github.com/1stthomas/ht7-concrete5-base"
-    },
     "require": {
         "php": "^7.0",
         "composer/installers": "^1.3",
