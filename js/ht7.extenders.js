@@ -5,9 +5,8 @@
  * see: https://css-tricks.com/snippets/javascript/htmlentities-for-javascript/
  */
 String.prototype.htmlEntities = function() {
-    return document.createElement('p').textContent.innerHTML;
+    const p = document.createElement('p');
+    p.textContent = this;
 
-//    var p = document.createElement('p');
-//    p.textContent = this;
-//    return p.innerHTML;
+    return p.innerHTML;
 };
