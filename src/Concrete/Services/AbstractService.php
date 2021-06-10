@@ -4,7 +4,7 @@ namespace Concrete\Package\Ht7C5Base\Services;
 
 use \Concrete\Core\Application\Application;
 
-class AbstractService
+abstract class AbstractService
 {
 
     /**
