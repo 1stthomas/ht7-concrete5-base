@@ -21,7 +21,7 @@ class PackageBase extends AbstractService
      * the package entity by this handle.
      *
      * @param   mixed                           $obj    An instance of a class from the
-     *                                      searched package or null.
+     *                                      searched package, a package handle or null.
      * @return  \Concrete\Core\Entity\Package
      */
     public function getPackage($obj = null)
@@ -31,9 +31,13 @@ class PackageBase extends AbstractService
                 return $this->app->make(PackageService::class)
                                 ->getByID($obj->getPackageID());
             }
+        } elseif (is_string($obj)) {
+            $pkgHandle = $obj;
         }
 
-        $pkgHandle = $this->getPackageHandle($obj);
+        if (!isset($pkgHandle)) {
+            $pkgHandle = $this->getPackageHandle($obj);
+        }
 
         return $this->app->make(PackageService::class)
                         ->getByHandle($pkgHandle);
