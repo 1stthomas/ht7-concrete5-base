@@ -3,9 +3,13 @@
 namespace Concrete\Package\Ht7C5Base\Services;
 
 use \Concrete\Core\Application\Application;
+use \Concrete\Core\Application\ApplicationAwareInterface;
+use \Concrete\Core\Application\ApplicationAwareTrait;
 
-abstract class AbstractService
+abstract class AbstractService implements ApplicationAwareInterface
 {
+
+    use ApplicationAwareTrait;
 
     /**
      * @var     Application             The application container.
@@ -19,7 +23,7 @@ abstract class AbstractService
      */
     public function __construct(Application $app)
     {
-        $this->app = $app;
+        $this->setApplication($app);
     }
 
 }
