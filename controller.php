@@ -104,53 +104,31 @@ class Controller extends Package
         }
     }
 
-    private function registerAssets()
+    protected function registerAssets(
+            string $ns = 'assets',
+            string $keySingle = 'single',
+            string $keyGroup = 'group'
+    )
     {
         $al = AssetList::getInstance();
+        $assets = $this->getFileConfig()->get($ns);
 
-        $al->register(
-                'css',
-                'ht7-widgets/status-toggle',
-                'css/ht7.widgets.statustoggle.css',
-                ['version' => '0.0.1', 'minify' => true, 'combine' => true],
-                $this
-        );
-        $al->register(
-                'css',
-                'ht7-widgets/body-overlay',
-                'css/ht7.widgets.bodyoverlay.css',
-                ['version' => '0.0.1', 'minify' => true, 'combine' => true],
-                $this
-        );
-        $al->register(
-                'javascript',
-                'ht7-widgets/body-overlay',
-                'js/ht7.widgets.bodyoverlay.js',
-                ['version' => '0.0.1', 'minify' => true, 'combine' => true],
-                $this
-        );
-        $al->register(
-                'javascript',
-                'ht7-widgets/concrete5',
-                'js/ht7.widgets.c5.js',
-                ['version' => '0.0.1', 'minify' => true, 'combine' => true],
-                $this
-        );
-        $al->register(
-                'javascript',
-                'ht7-extenders',
-                'js/ht7.extenders.js',
-                ['version' => '0.0.1', 'minify' => true, 'combine' => true],
-                $this
-        );
-
-        $al->registerGroup(
-                'ht7-widgets/body-overlay',
-                [
-                    ['css', 'ht7-widgets/body-overlay'],
-                    ['javascript', 'ht7-widgets/body-overlay']
-                ]
-        );
+        if (!empty($assets[$keySingle])) {
+            foreach ($assets[$keySingle] as $asset) {
+                $al->register(
+                        $asset[0],
+                        $asset[1],
+                        $asset[2],
+                        $asset[3],
+                        $this
+                );
+            }
+        }
+        if (!empty($assets[$keyGroup])) {
+            foreach ($assets[$keyGroup] as $name => $assetGroup) {
+                $al->registerGroup($name, $assetGroup);
+            }
+        }
     }
 
     /**
@@ -164,7 +142,7 @@ class Controller extends Package
 
     private function setupAutoloader()
     {
-        if (file_exists($this->getPackagePath() . '/vendor')) {
+        if (file_exists($this->getPackagePath() . '/vendor/autoload.php')) {
             // Only for development to make sure the package dependencies are
             // accessable.
             require_once $this->getPackagePath() . '/vendor/autoload.php';
