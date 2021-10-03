@@ -2,13 +2,15 @@
 
 namespace Concrete\Package\Ht7C5Base\Entity;
 
-use \InvalidArgumentException;
+use \Concrete\Core\Support\Facade\Application;
 use \Concrete\Package\Ht7C5Base\Traits\CanLoad;
+use \Doctrine\ORM\EntityManagerInterface;
+use \Doctrine\ORM\Mapping as ORM;
 
 /**
- * @MappedSuperclass
+ * @ORM\MappedSuperclass
  */
-class OrmEntityExtended extends OrmEntityBase
+abstract class OrmEntityExtended extends OrmEntityBase implements \Serializable
 {
 
     use CanLoad;
@@ -23,30 +25,30 @@ class OrmEntityExtended extends OrmEntityBase
     /**
      * @var Integer
      *
-     * @Id
-     * @GeneratedValue
-     * @Column(type="integer", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer", options={"unsigned"=true})
      */
     protected $id;
 
     /**
      * @var \DateTime
      *
-     * @Column(type="datetime", nullable=false)
+     * @ORM\Column(type="datetime", nullable=false)
      */
     protected $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @Column(type="datetime", nullable=false)
+     * @ORM\Column(type="datetime", nullable=false)
      */
     protected $updatedAt;
 
     /**
      * @var \DateTime
      *
-     * @Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     protected $deletedAt;
 
@@ -55,10 +57,6 @@ class OrmEntityExtended extends OrmEntityBase
         parent::__construct();
 
         $this->load($data);
-
-//        if (!empty($data)) {
-//            $this->load($data);
-//        }
     }
 
     /**
@@ -94,6 +92,14 @@ class OrmEntityExtended extends OrmEntityBase
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function serialize()
+    {
+        return serialize($this->toArray());
+    }
+
+    /**
      * @param DateTime $createdAt
      */
     public function setCreatedAt($createdAt)
@@ -118,6 +124,26 @@ class OrmEntityExtended extends OrmEntityBase
     }
 
     /**
+     *
+     * @return  array                   Assoc array of all properties of the
+     *                                  present instance.
+     */
+    public function toArray()
+    {
+        return get_object_vars($this);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function unserialize($data)
+    {
+        $arr = unserialize($data);
+
+        $this->load($arr);
+    }
+
+    /**
      * Return whetever the safe delete functionality is activated or not.
      *
      * @return  boolean
@@ -137,7 +163,8 @@ class OrmEntityExtended extends OrmEntityBase
      */
     public static function getByID($id, $respectSafeDeleteProperty = true)
     {
-        $em = self::getEm();
+        $em = Application::getFacadeApplication()
+                ->make(EntityManagerInterface::class);
 
         if ($respectSafeDeleteProperty && static::$safeDelete) {
             return $em->getRepository(static::class)
@@ -170,14 +197,13 @@ class OrmEntityExtended extends OrmEntityBase
             $classNs = static::class;
             $className = substr($classNs, strrpos($classNs, '\\') + 1);
             $entityName = strpos($className, 'MeschCm') !== false ? str_replace('MeschCm', '', $className) : $className;
-            // Create the exception message
+
             $msg = tc(
                     'ht7_c5_base',
                     'The requested %1$s with the id %2$s could not be found.',
                     $entityName, $id
             );
-            throw new InvalidArgumentException($msg);
-//            throw new MeschPageNotFoundException($msg);
+            throw new \InvalidArgumentException($msg);
         }
     }
 

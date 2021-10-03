@@ -2,23 +2,15 @@
 
 namespace Concrete\Package\Ht7C5Base\Entity;
 
-use \DateTime;
-use \Concrete\Package\Ht7C5Base\Traits\CanPackageBasics;
+use \Concrete\Core\Support\Facade\Application;
+use \Doctrine\ORM\EntityManagerInterface;
+use \Doctrine\ORM\Mapping as ORM;
 
 /**
- * @MappedSuperclass
+ * @ORM\MappedSuperclass
  */
-class OrmEntityBase
+abstract class OrmEntityBase
 {
-
-    use CanPackageBasics;
-
-    /**
-     * The c5 application facade.
-     *
-     * @var     \Concrete\Core\Support\Facade\Application
-     */
-    protected static $app;
 
     /**
      * Create a new instance of the underlying entity.
@@ -30,10 +22,10 @@ class OrmEntityBase
     public function __construct()
     {
         if (property_exists($this, 'createdAt')) {
-            $this->createdAt = new DateTime('now');
+            $this->createdAt = new \DateTime('now');
         }
         if (property_exists($this, 'updatedAt')) {
-            $this->updatedAt = new DateTime('now');
+            $this->updatedAt = new \DateTime('now');
         }
     }
 
@@ -53,14 +45,21 @@ class OrmEntityBase
      */
     public function delete($respectSettings = true)
     {
-        if (property_exists(get_called_class(), 'safeDelete') && static::$safeDelete && property_exists($this, 'deletedAt') && $respectSettings) {
-            $this->deletedAt = new DateTime('now');
+        if (property_exists(get_called_class(), 'safeDelete') &&
+                static::$safeDelete &&
+                property_exists($this, 'deletedAt') &&
+                $respectSettings) {
+            $this->deletedAt = new \DateTime('now');
+
             if (property_exists($this, 'updatedAt')) {
-                $this->updatedAt = new DateTime('now');
+                $this->updatedAt = new \DateTime('now');
             }
+
             $this->save();
         } else {
-            $em = self::getEm();
+            $em = Application::getFacadeApplication()
+                    ->make(EntityManagerInterface::class);
+
             $em->remove($this);
             $em->flush();
         }
@@ -75,9 +74,12 @@ class OrmEntityBase
     public function save()
     {
         if (property_exists($this, 'updatedAt')) {
-            $this->updatedAt = new DateTime('now');
+            $this->updatedAt = new \DateTime('now');
         }
-        $em = self::getEm();
+
+        $em = Application::getFacadeApplication()
+                ->make(EntityManagerInterface::class);
+
         $em->persist($this);
         $em->flush();
     }

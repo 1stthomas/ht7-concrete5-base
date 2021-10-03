@@ -13,11 +13,6 @@ namespace Concrete\Package\Ht7C5Base\Traits;
 trait CanLoad
 {
 
-    /**
-     * @var     \Symfony\Component\HttpFoundation\Session\Flash\FlashBag
-     */
-    protected static $fb;
-
     public function load(array $data)
     {
         foreach ($data as $key => $value) {

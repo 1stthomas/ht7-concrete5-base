@@ -2,6 +2,9 @@
 
 namespace Concrete\Package\Ht7C5Base\Traits;
 
+use \Concrete\Core\Support\Facade\Application;
+use \Doctrine\ORM\EntityManagerInterface;
+
 /**
  * This trait provides some methods to handle the Symfony FlashBag to set and
  * get specific session values.
@@ -10,8 +13,6 @@ namespace Concrete\Package\Ht7C5Base\Traits;
  */
 trait CanHandleFlashBag
 {
-
-    use CanPackageBasics;
 
     /**
      * @var     \Symfony\Component\HttpFoundation\Session\Flash\FlashBag
@@ -26,7 +27,9 @@ trait CanHandleFlashBag
     protected function getFlashBag()
     {
         if (is_null(static::$fb)) {
-            static::$fb = $this->getApp()->make('session')->getFlashBag();
+            static::$fb = Application::getFacadeApplication()
+                    ->make('session')
+                    ->getFlashBag();
         }
 
         return static::$fb;

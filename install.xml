@@ -1,11 +1,41 @@
 <?xml version="1.0"?>
 <concrete5-cif version="1.0">
     <singlepages>
-        <page name="ht7" path="/dashboard/ht7" filename="/dashboard/ht7.php" pagetype="" description="Ht7 Starting Page" package="ht7_c5_base"></page>
-        <page name="Environment" path="/dashboard/ht7/environment" filename="/dashboard/ht7/environment.php" pagetype="" description="" package="ht7_c5_base"></page>
-        <page name="Packages" path="/dashboard/ht7/environment/packages" filename="/dashboard/ht7/environment/packages.php" pagetype="" description="Main ht7 packages page" package="ht7_c5_base"></page>
-        <page name="Settings" path="/dashboard/ht7/settings" filename="/dashboard/ht7/settings.php" pagetype="" description="Main settings page" package="ht7_c5_base"></page>
-        <page name="Blocks" path="/dashboard/ht7/settings/blocks" filename="/dashboard/ht7/settings/blocks.php" pagetype="" description="Main settings page for ht7 blocks" package="ht7_c5_base"></page>
-        <page name="ht7 Servers" path="/dashboard/ht7/ht7-servers" filename="/dashboard/ht7/ht7_servers/ht7_servers.php" pagetype="" description="Main page for ht7 servers" package="ht7_c5_base"></page>
+        <page
+            name="ht7"
+            path="/dashboard/ht7"
+            filename="/dashboard/ht7.php"
+            pagetype=""
+            description="Ht7 Starting Page"
+            package="ht7_c5_base"
+        >
+        </page>
+        <page
+            name="ht7 Block Settings"
+            path="/dashboard/ht7/blocks"
+            filename="/dashboard/ht7/blocks.php"
+            pagetype=""
+            description="Ht7 block settings"
+            package="ht7_c5_base"
+        >
+        </page>
+        <page
+            name="ht7 Tools"
+            path="/dashboard/ht7/tools"
+            filename="/dashboard/ht7/tools.php"
+            pagetype=""
+            description="Ht7 tools"
+            package="ht7_c5_base"
+        >
+        </page>
+        <page
+            name="ht7 Settings"
+            path="/dashboard/ht7/tools/settings"
+            filename="/dashboard/ht7/tools/settings.php"
+            pagetype=""
+            description="Ht7 settings"
+            package="ht7_c5_base"
+        >
+        </page>
     </singlepages>
 </concrete5-cif>

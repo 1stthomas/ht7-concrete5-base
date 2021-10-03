@@ -1,0 +1,37 @@
+@keyframes ht7-spin-loader {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.ht7-body-overlay {
+  bottom: 0;
+  display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 2000;
+}
+.ht7-body-overlay.raised {
+  z-index: 2100;
+}
+.ht7-body-overlay.visible {
+  display: block;
+}
+.ht7-body-overlay .overlay-bg {
+  background-color: #333;
+  height: 100%;
+  opacity: 0.3;
+  position: absolute;
+  width: 100%;
+}
+.ht7-body-overlay .overlay-loader {
+  font-size: 52px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.ht7-body-overlay .overlay-loader > i {
+  animation: ht7-spin-loader 4s linear infinite;
+}

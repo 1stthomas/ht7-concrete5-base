@@ -1,0 +1,28 @@
+#ccm-dashboard-page .ht7-dashboard.ht7-tools-settings.bordered-settings ul.ht7-settings-list li {
+  border-bottom: 1px solid #ddd;
+}
+#ccm-dashboard-page .ht7-dashboard.ht7-tools-settings.stripped-settings ul.ht7-settings-list li:nth-child(even) {
+  position: relative;
+}
+#ccm-dashboard-page .ht7-dashboard.ht7-tools-settings.stripped-settings ul.ht7-settings-list li:nth-child(even) .styler {
+  background-color: #efefef;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+#ccm-dashboard-page .ht7-dashboard.ht7-tools-settings ul.ht7-settings-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#ccm-dashboard-page .ht7-dashboard.ht7-tools-settings ul.ht7-settings-list li {
+  /*                        .styler {
+
+                                            }*/
+}
+#ccm-dashboard-page .ht7-dashboard.ht7-tools-settings ul.ht7-settings-list li .control-label {
+  margin-bottom: 0;
+}

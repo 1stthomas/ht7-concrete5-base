@@ -3,8 +3,9 @@
 namespace Concrete\Package\Ht7C5Base;
 
 use \Concrete\Core\Foundation\Service\Provider as CoreServiceProvider;
-use \Concrete\Package\Ht7C5Base\Service\Files\NameFixer;
-use \Concrete\Package\Ht7C5Base\Service\Users\User;
+use \Concrete\Package\Ht7C5Base\Services\FileNameFixer;
+use \Concrete\Package\Ht7C5Base\Services\PackageBase;
+use \Concrete\Package\Ht7C5Base\Services\UserBase;
 
 class ServiceProvider extends CoreServiceProvider
 {
@@ -13,15 +14,16 @@ class ServiceProvider extends CoreServiceProvider
     {
         $this->app->bind(
                 'helper/ht7/file/namefixer',
-                NameFixer::class
+                FileNameFixer::class
         );
         $this->app->bind(
-                'helper/ht7/users/user',
-                User::class
+                'helper/ht7/package/base',
+                PackageBase::class
         );
-
-        // Add these classes as singleton to have only one active instance of them.
-//        $this->app->singleton(LogEvents::class);
+        $this->app->bind(
+                'helper/ht7/user/base',
+                UserBase::class
+        );
     }
 
 }
