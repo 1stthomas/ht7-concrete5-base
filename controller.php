@@ -19,7 +19,7 @@ class Controller extends Package
     protected $appVersionRequired = '8.5';
     protected $pkgAutoloaderMapCoreExtensions = true;
     protected $pkgHandle = 'ht7_c5_base';
-    protected $pkgVersion = '0.1.0';
+    protected $pkgVersion = '0.2.0';
 
     /**
      * @var \Concrete\Core\Entity\Package
