@@ -5,6 +5,10 @@ architecture and some basic functionallity.
 
 ## Developer Notes ##
 
+### Ht7 Tools ###
+This package provides a simple tool to maintain dashboard pages to display and save
+settings from the concrete5 file config system.
+
 ### Helper classes ###
 
 #### PackageBase ####
