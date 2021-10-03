@@ -1,7 +1,41 @@
 <?xml version="1.0"?>
 <concrete5-cif version="1.0">
     <singlepages>
-        <page name="ht7" path="/dashboard/ht7" filename="/dashboard/ht7.php" pagetype="" description="Ht7 Starting Page" package="ht7_c5_base"></page>
-        <page name="ht7 Block Settings" path="/dashboard/ht7/blocks" filename="/dashboard/ht7/blocks.php" pagetype="" description="Ht7 block settings" package="ht7_c5_base"></page>
+        <page
+            name="ht7"
+            path="/dashboard/ht7"
+            filename="/dashboard/ht7.php"
+            pagetype=""
+            description="Ht7 Starting Page"
+            package="ht7_c5_base"
+        >
+        </page>
+        <page
+            name="ht7 Block Settings"
+            path="/dashboard/ht7/blocks"
+            filename="/dashboard/ht7/blocks.php"
+            pagetype=""
+            description="Ht7 block settings"
+            package="ht7_c5_base"
+        >
+        </page>
+        <page
+            name="ht7 Tools"
+            path="/dashboard/ht7/tools"
+            filename="/dashboard/ht7/tools.php"
+            pagetype=""
+            description="Ht7 tools"
+            package="ht7_c5_base"
+        >
+        </page>
+        <page
+            name="ht7 Settings"
+            path="/dashboard/ht7/tools/settings"
+            filename="/dashboard/ht7/tools/settings.php"
+            pagetype=""
+            description="Ht7 settings"
+            package="ht7_c5_base"
+        >
+        </page>
     </singlepages>
 </concrete5-cif>

@@ -6,7 +6,7 @@ use \Concrete\Package\Ht7C5Base\Ht7Tools\Controllers\AbstractRedirectToFirstChil
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
-class Blocks extends AbstractRedirectToFirstChild
+class Tools extends AbstractRedirectToFirstChild
 {
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Concrete\Package\Ht7C5Base\Controller\SinglePage;
+namespace Concrete\Package\Ht7C5Base\Ht7Tools\Controllers;
 
 use \Concrete\Core\Http\ResponseFactory;
 use \Concrete\Core\Page\Controller\DashboardPageController;

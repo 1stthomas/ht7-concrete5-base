@@ -9,6 +9,7 @@ use \Concrete\Core\Package\Package;
 use \Concrete\Core\Package\PackageService;
 use \Concrete\Core\User\Group\Group;
 use \Concrete\Package\Ht7C5Base\ServiceProvider;
+use \Concrete\Package\Ht7C5Base\Ht7Tools\Tabs\ServiceProvider as TabsToolServiceProvider;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
@@ -52,11 +53,13 @@ class Controller extends Package
     {
         // Install the current package and create the defined db entities.
         $this->pkg = parent::install();
-        // Create all pages through the content XML.
-        $this->installContentFile('install.xml');
+
+        $this->setupAutoloader();
         // Make sure the package helper can be accessed by later installation
         // process' of this package.
         $this->registerServices();
+        // Create all pages through the content XML.
+        $this->installContentFile('install.xml');
         // If the path uses "-" to separate words and the filename
         // uses "_", the cFilename on the Pages table is empty.
         // Therefor we need to update this field.
@@ -138,6 +141,7 @@ class Controller extends Package
     {
         $list = new ProviderList($this->app);
         $list->registerProvider(ServiceProvider::class);
+        $list->registerProvider(TabsToolServiceProvider::class);
     }
 
     private function setupAutoloader()
