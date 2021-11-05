@@ -22,10 +22,15 @@
         {
             "type": "git",
             "url": "git@github.com:1stthomas/ht7-base.git"
+        },
+        {
+            "type": "git",
+            "url": "git@github.com:1stthomas/ht7-html.git"
         }
     ],
     "require": {
         "php": "^7.0",
-        "ht7/ht7-base": "dev-develop"
+        "ht7/ht7-base": "dev-master",
+        "ht7/ht7-html": "dev-master"
     }
 }
