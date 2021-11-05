@@ -21,21 +21,19 @@ class Settings extends AbstractHt7ToolsSettings
         $pkgFileConfig = $pkgH->getPackageFileConfig($this);
         $pkgHandle = $pkgH->getPackageHandle($this);
 
-        $this->definitions = new PageDefinitions(
-                [
-            'definitions' => ['forms.settings', $pkgFileConfig],
-            'elements' => [
-                'label' => ['tools/settings/label', $pkgHandle],
-                'setting' => ['tools/settings/attributes', $pkgHandle]
-            ],
-            'tabs' => ['ht7_tabs.settings', $pkgFileConfig],
-            'urls' => [
-                'form_abort' => $this->action(),
-                'form_save' => $this->action('save'),
-            ],
-            'values' => ['settings', $pkgFileConfig],
-                ],
-                PageDefinitionTypes::SIMPLE
+        $this->setDefinitions(new PageDefinitions([
+                    'definitions' => ['forms.settings', $pkgFileConfig],
+                    'elements' => [
+                        'label' => ['tools/settings/label', $pkgHandle],
+                        'setting' => ['tools/settings/attributes', $pkgHandle]
+                    ],
+                    'tabs' => ['ht7_tabs.settings', $pkgFileConfig],
+                    'urls' => [
+                        'form_abort' => $this->action(),
+                        'form_save' => $this->action('save'),
+                    ],
+                    'values' => ['settings', $pkgFileConfig],
+                        ], PageDefinitionTypes::SIMPLE)
         );
     }
 

@@ -107,6 +107,11 @@ abstract class AbstractHt7ToolsSettings extends DashboardPageController
         }
     }
 
+    public function setDefinitions(PageDefinitions $definitions)
+    {
+        $this->definitions = $definitions;
+    }
+
     public function view()
     {
         $this->requireAsset('javascript', 'ht7-widgets/concrete5');
