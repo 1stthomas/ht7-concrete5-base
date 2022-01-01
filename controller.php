@@ -15,11 +15,10 @@ defined('C5_EXECUTE') or die('Access Denied.');
 
 class Controller extends Package
 {
-
     protected $appVersionRequired = '8.5';
     protected $pkgAutoloaderMapCoreExtensions = true;
     protected $pkgHandle = 'ht7_c5_base';
-    protected $pkgVersion = '0.2.0';
+    protected $pkgVersion = '0.3.0';
 
     /**
      * @var \Concrete\Core\Entity\Package
@@ -33,22 +32,19 @@ class Controller extends Package
         // On installation, this one will be null, but parent::install() will
         // return the current package entity.
         $this->pkg = $app->make(PackageService::class)
-                ->getByHandle($this->pkgHandle);
+            ->getByHandle($this->pkgHandle);
     }
-
     public function getPackageDescription()
     {
         return tc(
-                'ht7_c5_base',
-                'Ht7 Starter package which installs some new dashboard pages and more.'
+            'ht7_c5_base',
+            'Ht7 Starter package which installs some new dashboard pages and more.'
         );
     }
-
     public function getPackageName()
     {
         return tc('ht7_c5_base', 'Ht7 c5 Starter');
     }
-
     public function install()
     {
         // Install the current package and create the defined db entities.
@@ -67,14 +63,12 @@ class Controller extends Package
 
         $this->installUserGroups();
     }
-
     public function on_start()
     {
         $this->setupAutoloader();
         $this->registerAssets();
         $this->registerServices();
     }
-
     /**
      * Make sure the c5 knows the the filenames belonging to the paths defined
      * by this package.
@@ -82,9 +76,8 @@ class Controller extends Package
     private function fixFilenames()
     {
         $this->app->make('helper/ht7/file/namefixer')
-                ->fixFilenames('/dashboard/ht7', $this->pkg);
+            ->fixFilenames('/dashboard/ht7', $this->pkg);
     }
-
     public function upgrade()
     {
         parent::upgrade();
@@ -92,25 +85,23 @@ class Controller extends Package
         // Create all missing pages through the content XML.
         $this->installContentFile('install.xml');
     }
-
     private function installUserGroups()
     {
         $gName = tc('ht7_c5_base-group_name', 'ht7');
 
         if (!is_object(Group::getByName($gName))) {
             Group::add(
-                    $gName,
-                    tc('ht7_c5_base-group_name', 'Base Group for ht7 applications.'),
-                    false,
-                    $this->pkg
+                $gName,
+                tc('ht7_c5_base-group_name', 'Base Group for ht7 applications.'),
+                false,
+                $this->pkg
             );
         }
     }
-
     protected function registerAssets(
-            string $ns = 'assets',
-            string $keySingle = 'single',
-            string $keyGroup = 'group'
+        string $ns = 'assets',
+        string $keySingle = 'single',
+        string $keyGroup = 'group'
     )
     {
         $al = AssetList::getInstance();
@@ -119,11 +110,11 @@ class Controller extends Package
         if (!empty($assets[$keySingle])) {
             foreach ($assets[$keySingle] as $asset) {
                 $al->register(
-                        $asset[0],
-                        $asset[1],
-                        $asset[2],
-                        $asset[3],
-                        $this
+                    $asset[0],
+                    $asset[1],
+                    $asset[2],
+                    $asset[3],
+                    $this
                 );
             }
         }
@@ -133,7 +124,6 @@ class Controller extends Package
             }
         }
     }
-
     /**
      * Register the package services, register the package specific ErrorHandler.
      */
@@ -143,7 +133,6 @@ class Controller extends Package
         $list->registerProvider(ServiceProvider::class);
         $list->registerProvider(TabsToolServiceProvider::class);
     }
-
     private function setupAutoloader()
     {
         if (file_exists($this->getPackagePath() . '/vendor/autoload.php')) {
@@ -152,5 +141,4 @@ class Controller extends Package
             require_once $this->getPackagePath() . '/vendor/autoload.php';
         }
     }
-
 }

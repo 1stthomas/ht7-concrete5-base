@@ -37,5 +37,14 @@
             package="ht7_c5_base"
         >
         </page>
+        <page
+            name="ht7 Games"
+            path="/dashboard/ht7/games"
+            filename="/dashboard/ht7/games.php"
+            pagetype=""
+            description="Ht7 games"
+            package="ht7_c5_base"
+        >
+        </page>
     </singlepages>
 </concrete5-cif>

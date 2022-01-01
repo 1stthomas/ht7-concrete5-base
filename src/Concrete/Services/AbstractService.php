@@ -10,7 +10,6 @@ abstract class AbstractService implements ApplicationAwareInterface
 {
 
     use ApplicationAwareTrait;
-
     /**
      * @var     Application             The application container.
      */
@@ -25,5 +24,4 @@ abstract class AbstractService implements ApplicationAwareInterface
     {
         $this->setApplication($app);
     }
-
 }
